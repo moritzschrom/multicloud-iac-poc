@@ -24,3 +24,20 @@ variable "aws_secret_key" {
 }
 
 # Google
+variable "google_project" {
+  description = "Project id for the google provider"
+  type        = string
+  sensitive   = false
+}
+
+variable "google_region" {
+  description = "Region for the google provider"
+  type        = string
+  sensitive   = false
+}
+
+variable "google_credentials" {
+  description = "Credentials key for the google provider"
+  type        = string
+  sensitive   = true
+}

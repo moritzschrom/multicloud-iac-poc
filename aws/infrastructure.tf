@@ -177,30 +177,3 @@ resource "aws_autoscaling_group" "my_asg" {
     propagate_at_launch = true
   }
 }
-
-resource "aws_db_subnet_group" "my_db_subnet_group" {
-  name       = "main"
-  subnet_ids = [for my_subnet in aws_subnet.my_subnets : my_subnet.id]
-
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
-}
-
-resource "aws_db_instance" "my_db" {
-  allocated_storage    = 10
-  engine               = "postgres"
-  engine_version       = "14.1"
-  instance_class       = "db.t3.micro"
-  db_name              = "my_db"
-  username             = "postgres"
-  password             = "postgres"
-  skip_final_snapshot  = true
-  db_subnet_group_name = aws_db_subnet_group.my_db_subnet_group.name
-
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
-}

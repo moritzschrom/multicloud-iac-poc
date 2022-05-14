@@ -39,3 +39,5 @@ override.tf.json
 terraform.rc
 
 # End of https://www.toptal.com/developers/gitignore/api/terraform
+
+multicloud-iac-poc-8c18c6492c2a.json
