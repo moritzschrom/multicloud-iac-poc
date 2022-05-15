@@ -1,3 +1,13 @@
+terraform {
+  backend "remote" {
+    organization = "if20b210"
+
+    workspaces {
+      name = "multicloud-iac-poc"
+    }
+  }
+}
+
 module "aws" {
   source = "./aws"
 

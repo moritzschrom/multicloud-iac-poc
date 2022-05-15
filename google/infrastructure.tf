@@ -9,7 +9,7 @@ resource "google_compute_subnetwork" "my_subnet" {
 }
 
 resource "google_compute_global_address" "my_static_ip" {
-  name     = "my-static-ip"
+  name = "my-static-ip"
 }
 
 resource "google_compute_global_forwarding_rule" "my_forwarding_rule" {
@@ -22,8 +22,8 @@ resource "google_compute_global_forwarding_rule" "my_forwarding_rule" {
 }
 
 resource "google_compute_target_http_proxy" "my_http_proxy" {
-  name     = "my-target-http-proxy"
-  url_map  = google_compute_url_map.my_url_map.id
+  name    = "my-target-http-proxy"
+  url_map = google_compute_url_map.my_url_map.id
 }
 
 resource "google_compute_url_map" "my_url_map" {
@@ -38,7 +38,7 @@ resource "google_compute_backend_service" "my_backend_service" {
   load_balancing_scheme = "EXTERNAL"
   timeout_sec           = 10
   enable_cdn            = true
-health_checks            = [google_compute_health_check.my_health_check.id]
+  health_checks         = [google_compute_health_check.my_health_check.id]
   backend {
     group           = google_compute_instance_group_manager.my_group_manager.instance_group
     balancing_mode  = "UTILIZATION"
@@ -67,14 +67,14 @@ resource "google_compute_instance_template" "my_template" {
 }
 
 resource "google_compute_health_check" "my_health_check" {
-  name     = "my-health-check"
+  name = "my-health-check"
   http_health_check {
     port_specification = "USE_SERVING_PORT"
   }
 }
 
 resource "google_compute_instance_group_manager" "my_group_manager" {
-  name     = "my-mig"
+  name = "my-mig"
 
   named_port {
     name = "http"
